@@ -13,7 +13,8 @@
     "@emotion/react": "^11.11.3",
     "jotai": "^2.6.4",
     "react": "next",
-    "react-dom": "next"
+    "react-dom": "next",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

@@ -17,6 +17,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: black;
   height: fit-content;
+  width: fit-content;
 }
 
 .user-list h2 {

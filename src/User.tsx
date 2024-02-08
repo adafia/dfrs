@@ -1,10 +1,17 @@
-import { User, fetchProfileData } from "./api";
-
-const resource = fetchProfileData(1);
+import { useAtom } from "jotai";
+import { User, fetchUser } from "./api";
+import { userAtom } from "./store";
+import useSWR from "swr";
 
 function ProfileDetails() {
-  const user = resource.user.read() as User;
-  return <h1>{user.name}</h1>;
+  const [currentUserId] = useAtom(userAtom);
+  const { data: user } = useSWR<User>(
+    ["users", currentUserId],
+    ([path, currentUserId]: [string, number]) => fetchUser(path, currentUserId),
+    { suspense: true }
+  );
+
+  return <h1>{user && user.name}</h1>;
 }
 
 export default ProfileDetails;
