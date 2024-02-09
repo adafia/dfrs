@@ -5,6 +5,7 @@ import { userAtom } from "./store";
 
 function ProfileTimeline() {
   const [currentUserId] = useAtom(userAtom);
+  const [data, setData] = useState
   const { data: posts } = useSWR<Post[]>(
     ["posts", currentUserId],
     ([path, currentUserId]: [string, number]) => fetchPosts(path, currentUserId),
