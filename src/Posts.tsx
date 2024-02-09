@@ -1,16 +1,21 @@
 import { useAtom } from "jotai";
 import { Post, fetchPosts } from "./api";
-import useSWR from "swr";
 import { userAtom } from "./store";
+import { useEffect, useState } from 'react';
 
 function ProfileTimeline() {
   const [currentUserId] = useAtom(userAtom);
-  const [data, setData] = useState
-  const { data: posts } = useSWR<Post[]>(
-    ["posts", currentUserId],
-    ([path, currentUserId]: [string, number]) => fetchPosts(path, currentUserId),
-    { suspense: true }
-  );
+  const [posts, setPosts] = useState<Post[] | null>(null)
+
+  useEffect(() => {
+    fetchPosts("posts", currentUserId).then((data) => {
+      setPosts(data)
+    })
+  } , [currentUserId])
+
+  if (!posts) {
+    return <h1>Loading posts...</h1>
+  }
 
   return (
     <ul>
