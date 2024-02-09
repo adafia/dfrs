@@ -1,7 +1,7 @@
-import { Post, fetchProfileData } from "./api";
+import { Post, fetchTimelineData } from "./api";
 
 
-const resource = fetchProfileData(1);
+const resource = fetchTimelineData(1);
 
 function ProfileTimeline() {
   const posts = resource.posts.read() as Post[];

@@ -23,9 +23,14 @@ export function fetchUsersData() {
 
 export function fetchProfileData(userId: number) {
   const userPromise = fetchUser(userId);
-  const postsPromise = fetchPosts(userId);
   return {
     user: wrapPromise(userPromise),
+  };
+}
+
+export function fetchTimelineData(userId: number) {
+  const postsPromise = fetchPosts(userId);
+  return {
     posts: wrapPromise(postsPromise),
   };
 }
