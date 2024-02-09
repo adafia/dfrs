@@ -11,12 +11,12 @@ function App() {
         <Users />
       </Suspense>
       <div className="user-timeline">
-      <Suspense fallback={<h1>Loading profile...</h1>}>
-        <ProfileDetails />
+        <Suspense fallback={<h1>Loading profile...</h1>}>
+          <ProfileDetails />
+        </Suspense>
         <Suspense fallback={<h1>Loading posts...</h1>}>
           <ProfileTimeline />
         </Suspense>
-      </Suspense>
       </div>
     </div>
   );
